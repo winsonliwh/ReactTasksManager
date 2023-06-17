@@ -55,7 +55,7 @@ export default function Welcome() {
 	useEffect(() => {
 		auth.onAuthStateChanged((user) => {
 			if (user) {
-				navigate("/react-tasks-manager/");
+				navigate("/home");
 			}
 		});
 	}, [navigate]);
@@ -64,9 +64,9 @@ export default function Welcome() {
 		e.preventDefault()
 		signInWithEmailAndPassword(auth, signInValues.email, signInValues.password)
 			.then(() => {
-				navigate("/react-tasks-manager/");
+				navigate("/home");
 			})
-			.catch((err) => alert(err.message));
+			.catch(() => alert("Invalid email or password!"));
 	};
 
 	const handleRegister = e => {
@@ -81,7 +81,7 @@ export default function Welcome() {
 			registerValues.password
 		)
 			.then(() => {
-				navigate("/react-tasks-manager/");
+				navigate("/home");
 			})
 			.catch((err) => alert(err.message));
 	};
@@ -197,6 +197,20 @@ export default function Welcome() {
 							<Button onClick={() => setIsRegistering(true)}>
 								Create an account
 							</Button>
+						</div>
+
+						<div style={{ fontSize: 20, marginTop: 24 }}>
+							<h4 style={{ textAlign: "center" }}>Or login the demo account.</h4>
+							<table style={{ margin: "auto" }}>
+								<tr>
+									<td style={{ textAlign: "right" }}>Email:&nbsp;</td>
+									<td>demo@gmail.com</td>
+								</tr>
+								<tr>
+									<td>Password:&nbsp;</td>
+									<td>demo123</td>
+								</tr>
+							</table>
 						</div>
 					</Box>
 				)}
